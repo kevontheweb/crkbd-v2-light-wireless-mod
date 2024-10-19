@@ -1,0 +1,24 @@
+(version 2.0)
+
+(rule "Hole to hole clearance"
+	#(severity ignore)
+	(constraint hole_to_hole (min 0.254mm))
+)
+
+(rule "Copper to hole clearance"
+	#(severity ignore)
+	(constraint hole_clearance (min 0.254mm))
+)
+
+(rule "Ignore Hole Clearance for switches"
+	#(severity ignore)
+	(condition "A.memberOfFootprint('SW*')")
+	(constraint hole_to_hole (min 0mm))
+	(constraint hole_clearance (min 0mm))
+)
+
+(rule "Hole to pour clearance for switches"
+	#(severity ignore)
+	(condition "A.memberOfFootprint('SW*') && B.Type == 'Zone'")
+	(constraint hole_clearance (min 0.254mm))
+)
