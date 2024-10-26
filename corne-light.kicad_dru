@@ -22,3 +22,9 @@
 	(condition "A.memberOfFootprint('SW*') && B.Type == 'Zone'")
 	(constraint hole_clearance (min 0.254mm))
 )
+
+(rule "Mousebites"
+	(severity ignore)
+	(condition "A.memberOfFootprint('MB*')")
+	(constraint hole_to_hole (min 0.254mm))
+)
